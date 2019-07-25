@@ -1,0 +1,36 @@
+{
+  "name": "timetrack-api",
+  "version": "1.0.0",
+  "description": "API para la aplicacion web para tracking de tiempo de la empresa BERA",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bera-group/timetrack-API.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "JuanDavidSolano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bera-group/timetrack-API/issues"
+  },
+  "homepage": "https://github.com/bera-group/timetrack-API#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.2",
+    "express": "^4.17.1",
+    "express-validator": "^6.1.1",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

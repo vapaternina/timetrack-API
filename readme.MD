@@ -14,12 +14,12 @@ API para un servicio de manejo de proyectos y contabilizacion de horas de trabaj
 
 `npm install`
 
-Create a `default.json` file in the config folder, example:
+Create a `.env` file in the config folder, example:
 
 ```
-{
-  "mongoURI": "mongodb+srv://<user>:<password>@cluster0-	xj7vb.mongodb.net/test?retryWrites=true&w=majority"
-}
+SERVER_IP=127.0.0.1
+SERVER_PORT=3000
+DB_URI=mongodb+srv://<user>:<password>@cluster0-	xj7vb.mongodb.net/test?retryWrites=true&w=majority
 ```
 
 ### Run

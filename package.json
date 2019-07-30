@@ -2,11 +2,11 @@
   "name": "timetrack-api",
   "version": "1.0.0",
   "description": "API para la aplicacion web para tracking de tiempo de la empresa BERA",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server"
+    "server": "cross-env NODE_ENV=development nodemon"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,8 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.2.2",
+    "cross-env": "^5.2.0",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-validator": "^6.1.1",
     "gravatar": "^1.8.0",

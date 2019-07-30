@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const config = require("config");
-const db = config.get("mongoURI");
+const config = require("./config");
 
+console.log(config.server);
 const connectDB = async () => {
   try {
-    await mongoose.connect(db, { useNewUrlParser: true });
+    await mongoose.connect(config.db.uri, { useNewUrlParser: true });
 
     console.log("Conectado exitosamente a la base de datos");
   } catch (err) {

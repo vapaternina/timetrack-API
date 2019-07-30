@@ -10,6 +10,10 @@ const server = require("http").createServer(app);
 
 app.get("/", (req, res) => res.send("API ejecutandose correctamente"));
 
+app.get("/:id",(req,res)=>{
+  res.send(req.params.id);
+});
+
 server.listen(PORT, hostname, () => {
   console.log(`Server running at http://${hostname}:${PORT}/`);
 });

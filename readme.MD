@@ -14,7 +14,7 @@ API para un servicio de manejo de proyectos y contabilizacion de horas de trabaj
 
 `npm install`
 
-Create a `.env` file in the config folder, example:
+Create a `.env` file in the root project, example:
 
 ```
 SERVER_IP=127.0.0.1

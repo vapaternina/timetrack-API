@@ -23,6 +23,7 @@
   "homepage": "https://github.com/bera-group/timetrack-API#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "config": "^3.2.2",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",

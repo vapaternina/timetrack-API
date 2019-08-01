@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var projectSchema = new Schema({
+const { Schema } = mongoose;
+
+var fields = {
   title: {
     type: String,
     required: true,
@@ -20,29 +21,39 @@ var projectSchema = new Schema({
   status: {
     type: String,
   },
-  start_date: {
+  startDate: {
     type: Date,
     required: true,
     default: Date.now,
   },
-  members: [],
-  last_update_date: {
+  members: {
+    type: [Schema.Types.ObjectId],
+  },
+  lastUpdateDate: {
     type: Date,
     required: true,
     default: Date.now,
   },
-  estimated_end_date: {
+  estimatedEndDate: {
     type: Date,
-  },
-  estimated_hours: {
-    type: Number,
     required: true,
   },
-  current_hours_spent: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-});
+};
 
-module.exports = Project = mongoose.model('project', projectSchema);
+const projectSchema = new Schema(fields);
+
+const virtuals = {
+  users: {
+    ref: 'users',
+    localField: 'fullName',
+    foreignField: 'memberName',
+  },
+};
+
+projectSchema.virtual('members', virtuals.users);
+
+module.exports = {
+  Model: mongoose.model('project', project),
+  fields,
+  virtuals,
+};

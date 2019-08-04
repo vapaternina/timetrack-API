@@ -15,9 +15,9 @@ const teamsRouter = require("./../teams/routes");
 
 router.route("/").post(controller.create);
 
-router.route("/:email/:password").post(controller.verify);
+router.route("/:email/:password").post(/*controller.verify*/);
 
-router.route("/:userId/profile").get(controller.read);
+router.route("/:userId/profile").get(/*controller.read*/);
 router.use("/:userId/teams", teamsRouter);
 router.route("/:userId/projects");
 router.route("/:userId/tasks").get();

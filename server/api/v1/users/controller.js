@@ -1,24 +1,29 @@
+const bcrypt = require("bcrypt");
 const { Model, fields } = require("./model");
+const { signToken } = require("./../auth");
 
 exports.all = (req, res, next) => {
   res.send("Users route");
 };
 
-exports.create = (req, res, next) => {
+exports.signup = async (req, res, next) => {
   const { body } = req;
-
   const document = new Model(body);
 
-  document
-    .save()
-    .then(doc => {
-      res.status(201);
-      res.json({
-        success: true,
-        item: doc
-      });
-    })
-    .catch(err => {
-      next(new Error(err));
+  try {
+    const doc = await document.save();
+    const { _id } = doc;
+    const token = signToken({ _id });
+
+    res.status(201);
+    res.json({
+      success: true,
+      data: doc,
+      meta: {
+        token
+      }
     });
+  } catch (err) {
+    next(new Error(err));
+  }
 };

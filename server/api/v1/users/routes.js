@@ -13,7 +13,7 @@ const teamsRouter = require("./../teams/routes");
  *  /api/users/:userId/tasks GET - Obtener todas las tareas que tiene asignado un usuario
  */
 
-router.route("/").post(controller.create);
+router.route("/").post(controller.signup);
 
 router.route("/:email/:password").post(/*controller.verify*/);
 

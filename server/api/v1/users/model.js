@@ -38,18 +38,17 @@ const fields = {
 
 const user = new Schema(fields, { timestamps: true });
 
-const virtuals = {
+/*const virtuals = {
   teams: {
     ref: "team",
     localField: "_id",
-    foreingField: "userId"
+    foreingField: "members"
   }
 };
 
-user.virtual("teams", virtuals.teams);
+user.virtual("teams", virtuals.teams);*/
 
 module.exports = {
   Model: mongoose.model("user", user),
-  fields,
-  virtuals
+  fields
 };

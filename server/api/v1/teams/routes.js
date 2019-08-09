@@ -4,12 +4,40 @@ const router = Router();
 const controller = require("./controller");
 
 
+/*
+ *  /api/teams/ POST - Creacion equipos 
+    Se envia el body con el siguiente formato
+    {
+      "leader": "id lider",
+      "members": ["id1", "id2", ... , id_n],
+      "task": ["task1", "task2", "task_n"],
+      "projects": ["projec1", "project2", "project_n"]
+    }
+ *  /api/teams/add POST - añadir miembros (id_miembros *dentro arreglo*) a un equipo (id_equipo)  todo enviado en el body
+    formato body
+    {
+      "teamId": "id",
+      "newMembers": ["id1", "id2", "id_n"]
+    }
+ *  /api/teams/del PUT - eliminar miembros (id_miembros *dentro arreglo*) de un equipo (id_equipo) todo enviado en el body
+    formato body
+    {
+      "teamId": "id",
+      "targetMembers": ["id1", "id2", "id_n"]
+    }
+ *  /api/teams/:teamid/members GET - Obtener todos los miembros pertenecientes a un equipo
+ *  /api/users/:userId/projects GET - Obtener todos los proyectos a los cuales pertenece un usuario
+ *  /api/users/:userId/tasks GET - Obtener todas las tareas que tiene asignado un usuario
+ */
+
 router.route('/')
   .get(controller.all)
   .post(controller.create);
 
 router.route("/add").post(controller.addmembers);
-router.route("/del").put(controller.deletemembers)
+router.route("/del").put(controller.deletemembers);
+router.route("/:teamid/members").get(controller.getmembers);
+router.route("/:teamid/projects").get(controller.getprojects);
 /*
 
 

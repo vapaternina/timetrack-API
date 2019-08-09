@@ -45,10 +45,26 @@ exports.addmembers = async (req, res, next) => {
 exports.deletemembers = async (req, res, next) => {
   const body = req.body;
   const teamId = body.teamId;
-  const newMembers = body.newMembers;
-  await teamModel.updateMany({ _id: teamId }, { $pullAll: { members: newMembers } } , function (err, user) {
+  const targetMembers = body.newMembers;
+  await teamModel.updateMany({ _id: teamId }, { $pullAll: { members: targetMembers } } , function (err, user) {
     if (err) return console.error(err);
     console.log(user.ok);
     res.send("Miembro(s) eliminados correctamente");
   });
 };
+
+exports.getmembers = async(req, res, next)=>{
+  const teamId= req.params.teamid;
+  const team = await teamModel.findById({_id: teamId}, function (err, user){
+    if (err) return res.send("not members found");
+    res.send(user.members);
+  });
+}
+
+exports.getprojects = async(req, res, next)=>{
+  const teamId= req.params.teamid;
+  const team = await teamModel.findById({_id: teamId}, function (err, user){
+    if (err) return res.send("not projects found");
+    res.send(user.projects);
+  });
+}

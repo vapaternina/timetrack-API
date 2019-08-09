@@ -13,6 +13,8 @@ exports.create = async (req, res, next) => {
   res.json(req.body);
   await newTeam.save().then(console.log("Equipo creado"));
 };
+
+
 //añadir uno o mas miembros al equipo de trabajo
 exports.addmembers = async (req, res, next) => {
   const body = req.body;
@@ -66,5 +68,13 @@ exports.getprojects = async(req, res, next)=>{
   const team = await teamModel.findById({_id: teamId}, function (err, user){
     if (err) return res.send("not projects found");
     res.send(user.projects);
+  });
+}
+
+exports.gettasks = async(req, res, next)=>{
+  const teamId= req.params.teamid;
+  const team = await teamModel.findById({_id: teamId}, function (err, user){
+    if (err) return res.send("not projects found");
+    res.send(user.tasks);
   });
 }

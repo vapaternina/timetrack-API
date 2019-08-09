@@ -26,8 +26,8 @@ const controller = require("./controller");
       "targetMembers": ["id1", "id2", "id_n"]
     }
  *  /api/teams/:teamid/members GET - Obtener todos los miembros pertenecientes a un equipo
- *  /api/users/:userId/projects GET - Obtener todos los proyectos a los cuales pertenece un usuario
- *  /api/users/:userId/tasks GET - Obtener todas las tareas que tiene asignado un usuario
+ *  /api/users/:teamid/projects GET - Obtener todos los proyectos pertenecientes a un equipo
+ *  /api/users/:teamid/tasks GET - Obtener todas las tareas pertenecientes a un equipo
  */
 
 router.route('/')
@@ -38,6 +38,7 @@ router.route("/add").post(controller.addmembers);
 router.route("/del").put(controller.deletemembers);
 router.route("/:teamid/members").get(controller.getmembers);
 router.route("/:teamid/projects").get(controller.getprojects);
+router.route("/:teamid/tasks").get(controller.gettasks);
 /*
 
 
